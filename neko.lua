@@ -1732,6 +1732,11 @@ coroutine.resume(coroutine.create(function()
 				s2.EmitterSize = 30
 			end
 		end))
+					
+		if workspace:FindFirstChild("non"):FindFirstChild("Animation") and workspace.non.Animation.Value ~= "neko" then
+			break
+		end
+				
 		Swait()
 	end
 end))
