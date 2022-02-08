@@ -129,10 +129,6 @@ local Part36 = Instance.new("Part")
 local Part38 = Instance.new("Part")
 local Model13 = Instance.new("Model")
 
-if Character:FindFirstChild("Animate")then
-	Character.Animate:Destroy()
-end
-
 function RemoveOutlines(part)
 	part.TopSurface, part.BottomSurface, part.LeftSurface, part.RightSurface, part.FrontSurface, part.BackSurface = 10, 10, 10, 10, 10, 10
 end
