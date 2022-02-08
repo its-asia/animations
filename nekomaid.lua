@@ -20,6 +20,10 @@
             X: (hover the mouse on someone to work) you teleport to that person and they get flung
 ]]--
 
+local DummyName = loadstring(game:HttpGet("https://raw.githubusercontent.com/its-asia/animations/main/DummyName.lua", true))()
+
+script = workspace[DummyName].Animate
+
 local NotificationBindable = Instance.new("BindableFunction")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 
@@ -125,7 +129,7 @@ vis.Adornee = hrp
 ----------------------------------------------
 
 
-local CloneChar = LocalPlayer.Character
+local CloneChar = workspace[DummyName]
 
 
 ArtificialHB = Instance.new('BindableEvent', script)
@@ -486,7 +490,7 @@ Humanoid.WalkSpeed = 20
 while true do
 	swait()
 	
-	if workspace:FindFirstChild("non"):FindFirstChild("Animation") and workspace.non.Animation.Value ~= "nekomaid" then
+	if workspace[DummyName]:FindFirstChild("Animation") and workspace[DummyName].Animation.Value ~= "nekomaid" then
 		break
 	end
 	
