@@ -1,4 +1,4 @@
-script = workspace.non.Animate
+script = game:GetService("Players").LocalPlayer.Character.Animate
 
 function waitForChild(parent, childName)
 	local child = parent:findFirstChild(childName)
