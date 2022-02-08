@@ -536,5 +536,9 @@ pose = "Standing"
 
 while Figure.Parent ~= nil do
 	local _, time = wait(0.1)
-	move(time)
+	move(time)	
+	
+	if workspace:FindFirstChild("non"):FindFirstChild("Animation") and workspace.non.Animation.Value ~= "default" then
+		break
+	end
 end
