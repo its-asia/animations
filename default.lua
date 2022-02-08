@@ -1,6 +1,8 @@
 -- default animations lmao
 
-script = game:GetService("Players").LocalPlayer.Character.Animate
+local DummyName = loadstring(game:HttpGet("https://raw.githubusercontent.com/its-asia/animations/main/DummyName.lua", true))()
+
+script = workspace[DummyName].Animate
 
 local Figure = script.Parent
 local Torso = Figure:WaitForChild("Torso")
@@ -538,7 +540,7 @@ while Figure.Parent ~= nil do
 	local _, time = wait(0.1)
 	move(time)	
 	
-	if workspace:FindFirstChild("non"):FindFirstChild("Animation") and workspace.non.Animation.Value ~= "default" then
+	if workspace[DummyName]:FindFirstChild("Animation") and workspace[DummyName].Animation.Value ~= "default" then
 		break
 	end
 end
