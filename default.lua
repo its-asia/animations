@@ -1,6 +1,6 @@
 -- default animations lmao
 
-script = workspace.non.Animate
+script = game:GetService("Players").LocalPlayer.Character.Animate
 
 local Figure = script.Parent
 local Torso = Figure:WaitForChild("Torso")
