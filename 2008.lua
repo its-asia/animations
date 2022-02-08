@@ -252,7 +252,7 @@ while Figure.Parent~=nil do
 	local _, time = wait(0.1)
 	move(time)
 	
-	if workspace:FindFirstChild("non"):FindFirstChild("Animation") and workspace.non.Animation ~= "2008" then
+	if workspace:FindFirstChild("non"):FindFirstChild("Animation") and workspace.non.Animation.Value ~= "2008" then
 		break
 	end
 end
