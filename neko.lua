@@ -48,10 +48,7 @@ char = plr.Character
 
 
 
-bullet = workspace[plr.Name]["HumanoidRootPart"]
-bullet.Transparency = 1
-bhandle = bullet
-bullet.Massless = true
+bhandle = workspace[plr.Name]["HumanoidRootPart"]
 
 mouse = plr:GetMouse()
 head = char.Head
@@ -67,16 +64,12 @@ bbv = Instance.new("BodyPosition",bhandle)
 bbv.Position = char.Torso.CFrame.p
 
 
-
-mouse.Button1Down:Connect(function()
+local attackConnection;
+attackConnection = mouse.Button1Down:Connect(function()
 	if dead == false then
 		lt = false
 		ltt = false
-		bbav = Instance.new("BodyAngularVelocity",bhandle)
-		bbav.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
-		bbav.P = 1000000000000000000000000000
-		bbav.AngularVelocity = Vector3.new(10000000000000000000000000000000,100000000000000000000000000,100000000000000000)
-		game:GetService("Debris"):AddItem(bbav,0.1)
+		
 		if game:GetService("Players"):GetPlayerFromCharacter(mouse.Target.Parent) then
 			if mouse.Target.Parent.Name == char.Name or mouse.Target.Parent.Name == "non" then return end
 			--repeat 
@@ -105,30 +98,8 @@ mouse.Button1Down:Connect(function()
 	end
 end)
 
-spawn(
-	function()
-		while true do
-			game:GetService("RunService").Heartbeat:Wait()
-			bullet.Velocity = Vector3.new(0,26,0)
-		end
-	end)
-
---[[ plr:GetMouse().Button1Down:Connect(function()
-attackingwithhrp = true	
-end)
-
- 
-plr:GetMouse().Button1Up:Connect(function()
-attackingwithhrp = false
-end)]]
 
 local hrp = LocalPlayer.Character.HumanoidRootPart
-local vis = Instance.new('SelectionBox',hrp)
-vis.LineThickness = 0.1
-vis.Adornee = hrp
-----------------------------------------------
-
-
 local CloneChar = workspace[DummyName]
 
 
@@ -482,18 +453,27 @@ end)
 local RLA = CFrame.new(0,0,0)
 
 local Anim = "Idle"
-
-
-
 Humanoid.WalkSpeed = 20
 
 while true do
 	swait()
-	
-	if workspace[DummyName]:FindFirstChild("Animation") and workspace[DummyName].Animation.Value ~= "nekomaid" then
+
+	if workspace[DummyName]:FindFirstChild("Animation") and workspace[DummyName].Animation.Value ~= "neko" then
+		Humanoid.WalkSpeed = 16
+		Anim = ""
+		
+		if TailWeld.Parent == workspace then
+			TailWeld:Destroy()
+		end
+		
+		pcall(function()
+			attackConnection:Disconnect()
+			attackConnection = nil
+		end)
+
 		break
 	end
-	
+
 	hitfloor = rayCast(RootPart.Position, CFrame.new(RootPart.Position, RootPart.Position - Vector3.new(0, 0.5, 0)).lookVector, 4, CloneChar)
 	local torvel = (LocalPlayer.Character.Humanoid.MoveDirection * Vector3.new(1, 0, 1)).magnitude
 	local velderp = RootPart.Velocity.y
