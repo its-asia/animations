@@ -66,29 +66,23 @@ newConnection(mouse.Button1Down:Connect(function()
 	if dead == false then
 		lt = false
 		ltt = false
-		
+
 		if game:GetService("Players"):GetPlayerFromCharacter(mouse.Target.Parent) then
-			if mouse.Target.Parent.Name == char.Name or mouse.Target.Parent.Name == "non" then return end
-			--repeat 
+			if mouse.Target.Parent.Name == char.Name or mouse.Target.Parent.Name == DummyName then return end
 			game:GetService("RunService").RenderStepped:Wait()
 			bbv.Position = (CFrame.new(mouse.Target.Parent.HumanoidRootPart.CFrame.Position,char.Torso.CFrame.Position) * CFrame.new(0,0,0)).Position
 			bhandle.Position = (CFrame.new(mouse.Target.Parent.HumanoidRootPart.CFrame.Position,char.Torso.CFrame.Position) * CFrame.new(0,0,0)).Position
 			wait(1)
-			--until char.Humanoid.Health == 100 or char.Humanoid.Health == 0
 		elseif game:GetService("Players"):GetPlayerFromCharacter(mouse.Target.Parent.Parent) then
-			if mouse.Target.Parent.Name == char.Name or mouse.Target.Parent.Name == "non" then return end
-			--repeat 
+			if mouse.Target.Parent.Name == char.Name or mouse.Target.Parent.Name == DummyName then return end
+
 			game:GetService("RunService").RenderStepped:Wait()
 			bbv.Position = (CFrame.new(mouse.Target.Parent.Parent.HumanoidRootPart.CFrame.Position,char.Torso.CFrame.Position) * CFrame.new(0,0,0)).Position
 			bhandle.Position = (CFrame.new(mouse.Target.Parent.Parent.HumanoidRootPart.CFrame.Position,char.Torso.CFrame.Position) * CFrame.new(0,0,0)).Position
 			wait(1)
-			--until char.Humanoid.Health == 100 or char.Humanoid.Health == 0
-
 		else
-			-- repeat 
 			game:GetService("RunService").RenderStepped:Wait()
 			wait(1)
-			--until char.Humanoid.Health == 100 or char.Humanoid.Health == 0
 		end
 		wait()
 		lt = true
@@ -445,24 +439,28 @@ while true do
 	swait()
 
 	if workspace[DummyName]:FindFirstChild("Animation") and workspace[DummyName].Animation.Value ~= "neko" then
+		local Camera = workspace.CurrentCamera
 		Humanoid.WalkSpeed = 16
 		Humanoid.JumpPower = 50
-		
+
 		Anim = ""
-		
+
 		Song:Stop()
 		Song:Destroy()
-		
+
 		if TailWeld.Parent == workspace then
 			TailWeld:Destroy()
 		end
-		
+
 		for _, Connection in pairs(connections) do
 			pcall(function()
 				Connection:Disconnect()
 				Connection = nil
 			end)
 		end
+		
+		Camera.CameraType = "Custom"
+		Camera.CameraSubject = workspace[DummyName]
 
 		break
 	end
