@@ -18,10 +18,7 @@ local DummyName = loadstring(game:HttpGet("https://raw.githubusercontent.com/its
 
 script = workspace[DummyName].Animate
 
-local NotificationBindable = Instance.new("BindableFunction")
 local LocalPlayer = game:GetService("Players").LocalPlayer
-
-local SongID = "http://www.roblox.com/asset/?id=198665867"
 
 local p = LocalPlayer
 local char = p.Character
@@ -39,9 +36,6 @@ Bypass = "Death"
 plr = LocalPlayer
 dead = false
 char = plr.Character
-
-
-
 bhandle = workspace[plr.Name]["HumanoidRootPart"]
 
 mouse = plr:GetMouse()
@@ -175,7 +169,6 @@ task.spawn(function()
 	repeat
 		wait()
 	until Humanoid.Health < 0.1
-	s:Disconnect()
 end)
 
 local Tail = LocalPlayer.Character:FindFirstChild("PlainTail")
@@ -186,10 +179,6 @@ else
 end
 
 local TC0 = TailWeld.C0 * CFrame.new(0,0,0.4)
-local Song = Instance.new("Sound",RootPart)
-Song.SoundId = SongID
-Song.Looped = true
-Song:Play()
 local Running = false
 
 local MakeTween = function(timetack,easingstyle,easingdirection,repeats,flipflop)
@@ -444,9 +433,6 @@ while true do
 		Humanoid.JumpPower = 50
 
 		Anim = ""
-
-		Song:Stop()
-		Song:Destroy()
 
 		if TailWeld.Parent == workspace then
 			TailWeld:Destroy()
