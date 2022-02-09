@@ -3,15 +3,6 @@
 -- For updates on script join this server
 -- https://discord.gg/ad7WVB6Bxf
 
-
--- Reconvertion by padero#0001
-
--- just found this on the pendulum hub discord server
--- ty padero#0001
-
-
-
-
 --[[
             CONTROLS:
 
@@ -66,9 +57,12 @@ end
 bbv = Instance.new("BodyPosition",bhandle)
 bbv.Position = char.Torso.CFrame.p
 
+local connections = {}
+function newConnection(Connection)
+	connections[#connections + 1] = Connection
+end
 
-local attackConnection;
-attackConnection = mouse.Button1Down:Connect(function()
+newConnection(mouse.Button1Down:Connect(function()
 	if dead == false then
 		lt = false
 		ltt = false
@@ -99,7 +93,7 @@ attackConnection = mouse.Button1Down:Connect(function()
 		wait()
 		lt = true
 	end
-end)
+end))
 
 
 local hrp = LocalPlayer.Character.HumanoidRootPart
@@ -182,17 +176,6 @@ bambam.Location = LocalPlayer.Character.HumanoidRootPart.Position
 rayCast = function(Pos, Dir, Max, Ignore)
 	return game:service("Workspace"):FindPartOnRay(Ray.new(Pos, Dir.unit * (Max or 999.999)), (CloneChar and LocalPlayer.Character))
 end
-
-task.spawn(function()
-	for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
-		if v:IsA("BasePart") and v.Name ~="HumanoidRootPart" then 
-			s = game:GetService("RunService").Heartbeat:connect(function()
-				v.Velocity = Vector3.new(0,35,0)
-				wait(0.3)
-			end)
-		end
-	end
-end)
 
 task.spawn(function()
 	repeat
@@ -355,18 +338,18 @@ local Attack = function()
 end
 local Mouse = LocalPlayer:GetMouse()
 local B1Hold = false
-Mouse.Button1Down:Connect(function()
+newConnection(Mouse.Button1Down:Connect(function()
 	B1Hold = true 
 	while B1Hold == true do
 		wait()
 		Attack()
 	end
-end)
+end))
 local Running = false
-Mouse.Button1Up:Connect(function()
+newConnection(Mouse.Button1Up:Connect(function()
 	B1Hold = false
-end)
-Mouse.KeyDown:Connect(function(key)
+end))
+newConnection(Mouse.KeyDown:Connect(function(key)
 	if key == "z" then
 		SpinKick()
 	else
@@ -410,7 +393,7 @@ Mouse.KeyDown:Connect(function(key)
 					end
 				elseif key == "x" and Attacking == false and Mouse.Target.Parent:FindFirstChildWhichIsA("Humanoid") ~= nil then
 					Attacking = true
-					Camera = workspace.CurrentCamera
+					local Camera = workspace.CurrentCamera
 					Camera.CameraType = "Scriptable"
 					local Target = Mouse.Target.Parent
 					for i = 0,200,1 do
@@ -452,7 +435,7 @@ Mouse.KeyDown:Connect(function(key)
 			end
 		end
 	end
-end)
+end))
 local RLA = CFrame.new(0,0,0)
 
 local Anim = "Idle"
@@ -474,10 +457,12 @@ while true do
 			TailWeld:Destroy()
 		end
 		
-		pcall(function()
-			attackConnection:Disconnect()
-			attackConnection = nil
-		end)
+		for _, Connection in pairs(connections) do
+			pcall(function()
+				Connection:Disconnect()
+				Connection = nil
+			end)
+		end
 
 		break
 	end
