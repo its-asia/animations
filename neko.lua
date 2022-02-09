@@ -4,7 +4,10 @@
 -- https://discord.gg/ad7WVB6Bxf
 
 
--- Reconvertion by padero#0001, reanimate by discord.gg/pendulum (they got really cool converted scripts go check em out)
+-- Reconvertion by padero#0001
+
+-- just found this on the pendulum hub discord server
+-- ty padero#0001
 
 
 
@@ -460,7 +463,12 @@ while true do
 
 	if workspace[DummyName]:FindFirstChild("Animation") and workspace[DummyName].Animation.Value ~= "neko" then
 		Humanoid.WalkSpeed = 16
+		Humanoid.JumpPower = 50
+		
 		Anim = ""
+		
+		Song:Stop()
+		Song:Destroy()
 		
 		if TailWeld.Parent == workspace then
 			TailWeld:Destroy()
