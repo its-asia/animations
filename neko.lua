@@ -36,7 +36,6 @@ Bypass = "Death"
 plr = LocalPlayer
 dead = false
 char = plr.Character
-bhandle = workspace[plr.Name]["HumanoidRootPart"]
 
 mouse = plr:GetMouse()
 head = char.Head
@@ -61,13 +60,11 @@ newConnection(mouse.Button1Down:Connect(function()
 		if game:GetService("Players"):GetPlayerFromCharacter(mouse.Target.Parent) then
 			if mouse.Target.Parent.Name == char.Name or mouse.Target.Parent.Name == DummyName then return end
 			game:GetService("RunService").RenderStepped:Wait()
-			bhandle.Position = (CFrame.new(mouse.Target.Parent.HumanoidRootPart.CFrame.Position,char.Torso.CFrame.Position) * CFrame.new(0,0,0)).Position
 			wait(1)
 		elseif game:GetService("Players"):GetPlayerFromCharacter(mouse.Target.Parent.Parent) then
 			if mouse.Target.Parent.Name == char.Name or mouse.Target.Parent.Name == DummyName then return end
 
 			game:GetService("RunService").RenderStepped:Wait()
-			bhandle.Position = (CFrame.new(mouse.Target.Parent.Parent.HumanoidRootPart.CFrame.Position,char.Torso.CFrame.Position) * CFrame.new(0,0,0)).Position
 			wait(1)
 		else
 			game:GetService("RunService").RenderStepped:Wait()
@@ -79,9 +76,7 @@ newConnection(mouse.Button1Down:Connect(function()
 end))
 
 
-local hrp = LocalPlayer.Character.HumanoidRootPart
 local CloneChar = workspace[DummyName]
-
 
 ArtificialHB = Instance.new('BindableEvent', script)
 ArtificialHB.Name = 'Heartbeat'
@@ -204,12 +199,10 @@ local SpinKick  = function()
 			tors["Right Hip"].C0 = tors["Right Hip"].C0:Lerp(rh * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(-20 + -10)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 			tors["Left Hip"].C0 = tors["Left Hip"].C0:Lerp(lh * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(-30 - -6)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 		end 
-		LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character.Torso.Position
 		RootPart.Anchored = true
 		for i = 0,60,1 do
 			swait()
 			RootPart.Position = RootPart.Position + Vector3.new(0,0.6,0)
-			LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character.Torso.Position
 			neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 			RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,0,0) * CFA(math.rad(-20 + -36*i),math.rad(0),math.rad(0)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 			tors["Right Shoulder"].C0 = tors["Right Shoulder"].C0:Lerp(rs * CF(0.0,0,0) * CFA(math.rad(0),math.rad(30),math.rad(40)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -230,7 +223,6 @@ local Attack = function()
 		if ComboCont == 1 then
 			for i = 0,10,1 do
 				swait()
-				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Right Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,0,0) * CFA(math.rad(-30),math.rad(0),math.rad(80)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				tors["Right Shoulder"].C0 = tors["Right Shoulder"].C0:Lerp(rs * CF(0.5,0,-1.2) * CFA(math.rad(0),math.rad(90),math.rad(90)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -241,7 +233,6 @@ local Attack = function()
 
 			for i = 0,15,1 do
 				swait()
-				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Right Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,-3,0) * CFA(math.rad(0),math.rad(0),math.rad(0)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				tors["Right Shoulder"].C0 = tors["Right Shoulder"].C0:Lerp(rs * CF(0.5,0,0) * CFA(math.rad(0),math.rad(-85),math.rad(90)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -255,7 +246,6 @@ local Attack = function()
 		elseif ComboCont == 2 then
 			for i = 0,10,1 do
 				swait()
-				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Left Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(90),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,0,0) * CFA(math.rad(-30),math.rad(0),math.rad(90)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				tors["Right Shoulder"].C0 = tors["Right Shoulder"].C0:Lerp(rs * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(-12)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -266,7 +256,6 @@ local Attack = function()
 
 			for i = 0,10,1 do
 				swait()
-				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Left Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(-90),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,-3,0) * CFA(math.rad(0),math.rad(0),math.rad(-90)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				tors["Right Shoulder"].C0 = tors["Right Shoulder"].C0:Lerp(rs * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(-12)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -278,7 +267,6 @@ local Attack = function()
 		elseif ComboCont == 3 then
 			for i = 0,10,1 do
 				swait()
-				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Left Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,0,0) * CFA(math.rad(10),math.rad(0),math.rad(-50)),LerpStyle(0.2,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				tors["Right Shoulder"].C0 = tors["Right Shoulder"].C0:Lerp(rs * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(-5)),LerpStyle(0.2,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -289,7 +277,6 @@ local Attack = function()
 
 			for i = 0,15,1 do
 				swait()
-				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Left Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(90),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,-3,0) * CFA(math.rad(-40),math.rad(0),math.rad(90)),LerpStyle(0.2,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				tors["Right Shoulder"].C0 = tors["Right Shoulder"].C0:Lerp(rs * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(-5)),LerpStyle(0.2,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -338,7 +325,6 @@ newConnection(Mouse.KeyDown:Connect(function(key)
 				Attacking = true
 				while LocalPlayer.Character.Humanoid.MoveDirection.Magnitude < 0.1 do
 					swait()
-					LocalPlayer.Character.HumanoidRootPart.Position = tors.Position
 					neck.C1 = neck.C1:Lerp(nek * CF(0,-0.4,0) * CFA(math.rad(-90),math.rad(-math.cos(time()*3)*30),0),LerpStyle(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.InOut))
 					RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,0,-2.5) * CFA(math.rad(78),math.rad(math.sin(time()*3)*12),math.rad(math.rad(math.sin(time()*3)*40))),LerpStyle(0.3*1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut))
 					tors["Right Shoulder"].C0 = tors["Right Shoulder"].C0:Lerp(rs * CF(0.3,0.4 +0.4+math.sin(time()*3)*0.2,-0.4 -0.2+math.sin(time()*3)*0.2) * CFA(math.rad(-45)+math.rad(math.sin(time()*3)*12),math.rad(0),math.rad(180 - 10+math.cos(time()*3)*5)),LerpStyle(0.1*1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut))
@@ -346,7 +332,6 @@ newConnection(Mouse.KeyDown:Connect(function(key)
 					tors["Right Hip"].C0 = tors["Right Hip"].C0:Lerp(rh * CF(0,0,0) * CFA(math.rad(-math.sin(time()*3)*12),math.rad(math.sin(time()*3)*30),math.rad(-12 - 50 + math.cos(time()*3)*30)),LerpStyle(0.3*1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut))
 					tors["Left Hip"].C0 = tors["Left Hip"].C0:Lerp(lh * CF(0,0,0) * CFA(math.rad(-math.sin(time()*3)*12),math.rad(math.sin(time()*3)*30),math.rad(12 + 50 + math.cos(time()*3)*30)),LerpStyle(0.3*1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut))
 					TailWeld.C0 = TailWeld.C0:Lerp(TC0 * CFrame.Angles(math.rad(0),0,math.rad(math.cos(time()*3)*40)),LerpStyle(0.1*1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut))
-
 				end
 				Attacking = false
 			else if key == "f" then
@@ -386,7 +371,6 @@ newConnection(Mouse.KeyDown:Connect(function(key)
 					RootPart.CFrame = Target.HumanoidRootPart.CFrame * CFrame.new(0,0,-8)
 					for i = 0,100,1 do
 						swait()
-						LocalPlayer.Character.HumanoidRootPart.Position = Target.HumanoidRootPart.Position
 						Camera.CFrame = Camera.CFrame:Lerp(CFrame.new((head.CFrame * CFrame.new(-3,0,0)).Position,Target.HumanoidRootPart.CFrame.Position),0.2)
 						neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 						RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,0,0) * CFA(math.rad(20),math.rad(0),math.rad(0)),LerpStyle(0.5,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -454,7 +438,6 @@ while true do
 
 
 	if Attacking == false then
-		LocalPlayer.Character.HumanoidRootPart.Position = tors.Position
 		if Anim == "Falling" then
 			neck.C1 = neck.C1:Lerp(nek * CF(0,0,0.3) * CFA(math.rad(20),0,0),LerpStyle(0.4,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut))
 			RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root *CF(0,0,0) * CFA(0,0,0),LerpStyle(0.4,Enum.EasingStyle.Back,Enum.EasingDirection.InOut))
