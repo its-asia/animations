@@ -48,9 +48,6 @@ local function IsFirstPerson()
 	return (head.CFrame.p - camera.CFrame.p).Magnitude < 1
 end
 
-bbv = Instance.new("BodyPosition",bhandle)
-bbv.Position = char.Torso.CFrame.p
-
 local connections = {}
 function newConnection(Connection)
 	connections[#connections + 1] = Connection
@@ -64,14 +61,12 @@ newConnection(mouse.Button1Down:Connect(function()
 		if game:GetService("Players"):GetPlayerFromCharacter(mouse.Target.Parent) then
 			if mouse.Target.Parent.Name == char.Name or mouse.Target.Parent.Name == DummyName then return end
 			game:GetService("RunService").RenderStepped:Wait()
-			bbv.Position = (CFrame.new(mouse.Target.Parent.HumanoidRootPart.CFrame.Position,char.Torso.CFrame.Position) * CFrame.new(0,0,0)).Position
 			bhandle.Position = (CFrame.new(mouse.Target.Parent.HumanoidRootPart.CFrame.Position,char.Torso.CFrame.Position) * CFrame.new(0,0,0)).Position
 			wait(1)
 		elseif game:GetService("Players"):GetPlayerFromCharacter(mouse.Target.Parent.Parent) then
 			if mouse.Target.Parent.Name == char.Name or mouse.Target.Parent.Name == DummyName then return end
 
 			game:GetService("RunService").RenderStepped:Wait()
-			bbv.Position = (CFrame.new(mouse.Target.Parent.Parent.HumanoidRootPart.CFrame.Position,char.Torso.CFrame.Position) * CFrame.new(0,0,0)).Position
 			bhandle.Position = (CFrame.new(mouse.Target.Parent.Parent.HumanoidRootPart.CFrame.Position,char.Torso.CFrame.Position) * CFrame.new(0,0,0)).Position
 			wait(1)
 		else
@@ -157,10 +152,6 @@ local ActiveTracks = Humanoid:GetPlayingAnimationTracks()
 Humanoid.JumpPower = 80
 local Attacking = false
 local AttackANVal = 1
-local bambam = Instance.new("BodyThrust")
-bambam.Parent = LocalPlayer.Character.HumanoidRootPart
-bambam.Force = Vector3.new(1000,0,1000)
-bambam.Location = LocalPlayer.Character.HumanoidRootPart.Position
 rayCast = function(Pos, Dir, Max, Ignore)
 	return game:service("Workspace"):FindPartOnRay(Ray.new(Pos, Dir.unit * (Max or 999.999)), (CloneChar and LocalPlayer.Character))
 end
@@ -171,11 +162,11 @@ task.spawn(function()
 	until Humanoid.Health < 0.1
 end)
 
-local Tail = LocalPlayer.Character:FindFirstChild("PlainTail")
+local Tail = CloneChar:FindFirstChild("PlainTail")
 if Tail ~= nil then
 	TailWeld = Tail.AccessoryWeld
 else
-	TailWeld = Instance.new("Weld",workspace)
+	TailWeld = Instance.new("Weld", workspace)
 end
 
 local TC0 = TailWeld.C0 * CFrame.new(0,0,0.4)
@@ -213,13 +204,11 @@ local SpinKick  = function()
 			tors["Right Hip"].C0 = tors["Right Hip"].C0:Lerp(rh * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(-20 + -10)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 			tors["Left Hip"].C0 = tors["Left Hip"].C0:Lerp(lh * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(-30 - -6)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 		end 
-		bambam.Location = LocalPlayer.Character.Torso.Position
 		LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character.Torso.Position
 		RootPart.Anchored = true
 		for i = 0,60,1 do
 			swait()
 			RootPart.Position = RootPart.Position + Vector3.new(0,0.6,0)
-			bambam.Location = LocalPlayer.Character["Right Leg"].Position
 			LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character.Torso.Position
 			neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 			RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,0,0) * CFA(math.rad(-20 + -36*i),math.rad(0),math.rad(0)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -241,7 +230,6 @@ local Attack = function()
 		if ComboCont == 1 then
 			for i = 0,10,1 do
 				swait()
-				bambam.Location = LocalPlayer.Character["Right Arm"].Position
 				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Right Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,0,0) * CFA(math.rad(-30),math.rad(0),math.rad(80)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -253,7 +241,6 @@ local Attack = function()
 
 			for i = 0,15,1 do
 				swait()
-				bambam.Location = LocalPlayer.Character["Right Arm"].Position
 				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Right Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,-3,0) * CFA(math.rad(0),math.rad(0),math.rad(0)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -268,7 +255,6 @@ local Attack = function()
 		elseif ComboCont == 2 then
 			for i = 0,10,1 do
 				swait()
-				bambam.Location = LocalPlayer.Character["Left Arm"].Position
 				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Left Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(90),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,0,0) * CFA(math.rad(-30),math.rad(0),math.rad(90)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -280,7 +266,6 @@ local Attack = function()
 
 			for i = 0,10,1 do
 				swait()
-				bambam.Location = LocalPlayer.Character["Left Arm"].Position
 				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Left Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(-90),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,-3,0) * CFA(math.rad(0),math.rad(0),math.rad(-90)),LerpStyle(0.1,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -293,7 +278,6 @@ local Attack = function()
 		elseif ComboCont == 3 then
 			for i = 0,10,1 do
 				swait()
-				bambam.Location = LocalPlayer.Character["Right Leg"].Position
 				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Left Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(0),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,0,0) * CFA(math.rad(10),math.rad(0),math.rad(-50)),LerpStyle(0.2,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -305,7 +289,6 @@ local Attack = function()
 
 			for i = 0,15,1 do
 				swait()
-				bambam.Location = LocalPlayer.Character["Right Leg"].Position
 				LocalPlayer.Character.HumanoidRootPart.Position = LocalPlayer.Character["Left Arm"].Position
 				neck.C1 = neck.C1:Lerp(nek * CF(0,0,0) * CFA(math.rad(0),math.rad(90),math.rad(0)),LerpStyle(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
 				RootPart.RootJoint.C0 = RootPart.RootJoint.C0:Lerp(root * CF(0,-3,0) * CFA(math.rad(-40),math.rad(0),math.rad(90)),LerpStyle(0.2,Enum.EasingStyle.Back,Enum.EasingDirection.Out))
@@ -444,7 +427,7 @@ while true do
 				Connection = nil
 			end)
 		end
-		
+
 		Camera.CameraType = "Custom"
 		Camera.CameraSubject = workspace[DummyName]
 
