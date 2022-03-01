@@ -1,6 +1,6 @@
 local DummyName = loadstring(game:HttpGet("https://raw.githubusercontent.com/its-asia/animations/main/DummyName.lua", true))()
 
-script = workspace[DummyName].Animate
+script = workspace[DummyName]:FindFirstChild('Animate') or workspace[DummyName]:FindFirstChild('Head')
 
 function waitForChild(parent, childName)
 	local child = parent:findFirstChild(childName)
