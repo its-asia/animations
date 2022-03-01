@@ -2,7 +2,7 @@
 
 local DummyName = loadstring(game:HttpGet("https://raw.githubusercontent.com/its-asia/animations/main/DummyName.lua", true))()
 
-script = workspace[DummyName].Animate
+script = workspace[DummyName]:FindFirstChild('Animate') or workspace[DummyName]:FindFirstChild('Head')
 
 local Figure = script.Parent
 local Torso = Figure:WaitForChild("Torso")
