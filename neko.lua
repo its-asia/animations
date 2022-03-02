@@ -78,25 +78,26 @@ end))
 
 local CloneChar = workspace[DummyName]
 
-ArtificialHB = Instance.new('BindableEvent', script)
+ArtificialHB = Instance.new('BindableEvent')
 ArtificialHB.Name = 'Heartbeat'
-script:WaitForChild('Heartbeat')
+
 frame = 1 / 60
 tf = 0
 allowframeloss = false
 tossremainder = false
 lastframe = tick()
-script.Heartbeat:Fire()
+
+ArtificialHB:Fire()
 
 game:GetService('RunService').Heartbeat:connect(function(s, p)
 	tf = tf + s
 	if tf >= frame then
 		if allowframeloss then
-			script.Heartbeat:Fire()
+			ArtificialHB:Fire()
 			lastframe = tick()
 		else
 			for i = 1, math.floor(tf / frame) do
-				script.Heartbeat:Fire()
+				ArtificialHB:Fire()
 			end
 			lastframe = tick()
 		end
@@ -419,11 +420,12 @@ while true do
 	end
 
 	hitfloor = rayCast(RootPart.Position, CFrame.new(RootPart.Position, RootPart.Position - Vector3.new(0, 0.5, 0)).lookVector, 4, CloneChar)
+	
 	local torvel = (LocalPlayer.Character.Humanoid.MoveDirection * Vector3.new(1, 0, 1)).magnitude
 	local velderp = RootPart.Velocity.y
+	
 	if RootPart.Velocity.y > 0 and hitfloor == nil then
 		Anim = "Jumping"
-
 	elseif RootPart.Velocity.y < 0 and hitfloor == nil then
 		Anim = "Falling"
 	elseif torvel < .5 and hitfloor ~= nil  then
@@ -431,11 +433,12 @@ while true do
 	elseif torvel > .5 and  hitfloor ~= nil  then
 		Anim = "Walking"
 	end
+	
 	local W1 = LocalPlayer.Character.Humanoid.MoveDirection* RootPart.CFrame.LookVector
 	local W2 = LocalPlayer.Character.Humanoid.MoveDirection* RootPart.CFrame.RightVector
+	
 	WVA = W1.X+W1.Z
 	RLV = W2.X+W2.Z
-
 
 	if Attacking == false then
 		if Anim == "Falling" then
