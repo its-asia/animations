@@ -1,6 +1,6 @@
------------//KRYSTAL DANCE V2\\-----------
 --[[
 
+FE Krystal Dance v2
 Movelist
 	Q = The Swoosher
 	E = The nutty
@@ -14,20 +14,22 @@ Movelist
 	H = The Spongebob
 	J = Here comes the money!
 	K = Runnin' in the 90's
-	
----------]]
 
--- Krystal dance! The old famous script that sadly has been broken (sorta), i've decided to rework this thing because... nostalgia.--
--- This is one of the first scripts i've ever ran on SB, seeing this back again really reminds me of how much of a noob i was.--
--- Credits to Krystalteam, they made the original krystal dance! Be sure to respect them or else...--
+Krystal dance! The old famous script that sadly has been broken (sorta), i've decided to rework this thing because... nostalgia.--
+This is one of the first scripts i've ever ran on SB, seeing this back again really reminds me of how much of a noob i was.--
 
--- Updates by charlie:
-	-- Changed Music of the 'Slav dance' to the kazotsky kick music
-	-- Removed Actual Barrel Model
-	-- Removed Big Fedora
-	-- Made work with simple re-anim
+Credits to Krystalteam, they made the original krystal dance! Be sure to respect them or else...--
+
+Updates by charlie:
+	- Changed Music of the 'Slav dance' to the kazotsky kick music
+	- Removed Actual Barrel Model
+	- Removed Big Fedora
+	- Made work with simple re-anim
+	- Removed Fedora and Shades
 
 -- #makeoldscriptsgreatagain --
+
+]]
 
 local DummyName = loadstring(game:HttpGet("https://raw.githubusercontent.com/its-asia/animations/main/DummyName.lua", true))()
 local Players = game:GetService("Players")
