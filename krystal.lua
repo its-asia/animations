@@ -1,7 +1,7 @@
 --[[
 
 FE Krystal Dance v2
-Movelist
+Movelist:
 	Q = The Swoosher
 	E = The nutty
 	R = Spin me right round!
@@ -27,7 +27,7 @@ Updates by charlie:
 	- Made work with simple re-anim
 	- Removed Fedora and Shades
 
--- #makeoldscriptsgreatagain --
+#makeoldscriptsgreatagain
 
 ]]
 
