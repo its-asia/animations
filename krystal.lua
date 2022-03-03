@@ -836,14 +836,10 @@ local movelimbs = coroutine.wrap(function()
 
 			HEADLERP.C0 = CFrame.new(0, -1.5, -0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
 			Neck.C0 = Neck.C0:lerp(OrgnC0 * CFrame.Angles(
-				(math.tan(Diff/Dist)*1), 
+				0, --(math.tan(Diff/Dist)*1), 
 				0, 
-				(
-					(
-						(Head.CFrame.p-Point).Unit):Cross(Torso.CFrame.LookVector)
-				).Y*1
-				), .1
-			)
+				(((Head.CFrame.p-Point).Unit):Cross(Torso.CFrame.LookVector)).Y*1), 
+				.1)
 		end
 	end
 end)
