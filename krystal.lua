@@ -844,7 +844,7 @@ local movelimbs = coroutine.wrap(function()
 	end
 end)
 
--- movelimbs()
+movelimbs()
 
 immortal = {}
 
