@@ -26,6 +26,7 @@ Updates by charlie:
 	- Removed Big Fedora
 	- Made work with simple re-anim
 	- Removed Fedora and Shades
+	- Removed all (except intro) sound effects
 
 #makeoldscriptsgreatagain
 
@@ -140,26 +141,6 @@ local function weldBetween(a, b)
 	return weld
 end
 
-function MAKETRAIL(PARENT,POSITION1,POSITION2,LIFETIME,COLOR)
-	local AttachmentA = Instance.new("Attachment", PARENT)
-	AttachmentA.Position = POSITION1
-	AttachmentA.Name = "A"
-
-	local AttachmentB = Instance.new("Attachment", PARENT)
-	AttachmentB.Position = POSITION2
-	AttachmentB.Name = "B"
-
-	local Trail = Instance.new("Trail", PARENT)
-	Trail.Attachment0 = AttachmentA
-	Trail.Attachment1 = AttachmentB
-	Trail.Enabled = true
-	Trail.Lifetime = LIFETIME
-	Trail.TextureMode = "Static"
-	Trail.LightInfluence = 0
-	Trail.Color = COLOR
-	Trail.Transparency = NumberSequence.new(0, 1)
-end
-
 IntroSound = Instance.new("Sound",Head)
 IntroSound.SoundId = "rbxassetid://236146895"
 IntroSound.Volume = 8
@@ -214,17 +195,6 @@ ws = 0
 
 ws = 14
 
-function SOUND(PARENT,ID,VOL,LOOP,REMOVE)
-	local so = Instance.new("Sound")
-	so.Parent = PARENT
-	so.SoundId = "rbxassetid://"..ID
-	so.Volume = VOL
-	so.Looped = LOOP
-
-	so:Play()
-	removeuseless:AddItem(so,REMOVE)
-end
-
 AddConnection(mouse.KeyDown:connect(function(Press)
 	Press=Press:lower()
 	if Press=='k' then
@@ -235,13 +205,6 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 0
 			change = .5
 			attacking = true
-			
-			local jam = Instance.new("Sound",Torso)
-			jam.SoundId = "rbxassetid://665751753"
-			jam.Volume = 8
-			jam.Looped = true
-			jam.TimePosition = 22.3
-			jam:Play()
 			
 			local lol90 = 0
 			
@@ -256,8 +219,8 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					LEFTLEGLERP.C0 = LEFTLEGLERP.C0:lerp(CFrame.new(0.3, 2.0, 0) * CFrame.Angles(0, math.rad(0), math.rad(10 - 5 * math.sin(sine/3))), 0.25)
 					swait()
 				end
+				
 				ws = 14
-				jam:Remove()
 				ROOTLERP.C1 = CFrame.new(0,0,0) * CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
 				attacking = false
 			end)()
@@ -281,13 +244,6 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			g1.P = 20000
 			g1.MaxTorque = Vector3.new(0,9000,0)
 			
-			local herecomesthemoney = Instance.new("Sound",Torso)
-			herecomesthemoney.Pitch = 1
-			herecomesthemoney.SoundId = "rbxassetid://2426693638"
-			herecomesthemoney.Volume = 8
-			herecomesthemoney.Looped = true
-			herecomesthemoney:Play()
-			
 			local robuxpile = Instance.new("Part",Torso)
 			robuxpile.Size = Vector3.new(1,1,1)
 			robuxpile.CFrame = LeftArm.CFrame
@@ -302,6 +258,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			mrobuxpile.MeshType = "FileMesh"
 			mrobuxpile.Scale = Vector3.new(0.85, .85, .85)
 			mrobuxpile.MeshId,mrobuxpile.TextureId = 'http://www.roblox.com/asset/?id=1285245','http://www.roblox.com/asset/?id=8587344'
+			
 			coroutine.wrap(function()
 				coroutine.wrap(function()
 					while wait(.35) do
@@ -355,12 +312,6 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			change = .5
 			attacking = true
 			
-			local jellyfishjam = Instance.new("Sound",Torso)
-			jellyfishjam.SoundId = "rbxassetid://840189092"
-			jellyfishjam.Volume = 8
-			jellyfishjam.Looped = true
-			jellyfishjam.TimePosition = 14.8
-			jellyfishjam:Play()
 			coroutine.wrap(function()
 				while dancing do
 					for i = 1, 15 do
@@ -401,6 +352,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					end
 					swait()
 				end
+				
 				ws = 14
 				attacking = false
 			end)()
@@ -419,11 +371,6 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			change = .5
 			attacking = true
 			
-			local deadmau7 = Instance.new("Sound",Torso)
-			deadmau7.SoundId = "rbxassetid://168166611"
-			deadmau7.Volume = 8
-			deadmau7.Looped = true
-			deadmau7:Play()
 			coroutine.wrap(function()
 				coroutine.wrap(function()
 					while dancing do
@@ -451,7 +398,6 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					swait()
 				end
 				ws = 14
-				deadmau7:Remove()
 				attacking = false
 			end)()
 		end
@@ -468,11 +414,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 6
 			change = .5
 			attacking = true
-			local bennyhill = Instance.new("Sound",Torso)
-			bennyhill.SoundId = "rbxassetid://138211362"
-			bennyhill.Volume = 8
-			bennyhill.Looped = true
-			bennyhill:Play()
+			
 			coroutine.wrap(function()
 				while dancing do
 					ROOTLERP.C0 = ROOTLERP.C0:Lerp(CFrame.new(0,-.4,0) * CFrame.Angles(math.rad(20 + 5 * math.sin(sine/2)),math.rad(10 * math.sin(sine/4)),0),.25)
@@ -482,8 +424,8 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					LEFTLEGLERP.C0 = LEFTLEGLERP.C0:lerp(CFrame.new(0.33, 2.0,-.2 - .3 * math.sin(sine/2)) * CFrame.Angles(math.rad(-20 - 20 * math.sin(sine/2)), math.rad(0), math.rad(8)), 0.25)
 					swait()
 				end
+				
 				ws = 14
-				bennyhill:Remove()
 				attacking = false
 			end)()
 		end
@@ -502,11 +444,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			attacking = true
 			
 			local barrelspin = 0
-			local barrelrollsound = Instance.new("Sound",Torso)
-			barrelrollsound.SoundId = "rbxassetid://505320170"
-			barrelrollsound.Volume = 8
-			barrelrollsound.Looped = true
-			barrelrollsound:Play()
+			
 			coroutine.wrap(function()
 				while dancing do
 					ROOTLERP.C0 = ROOTLERP.C0:Lerp(CFrame.new(5 * math.sin(sine/8),-1.8,0) * CFrame.Angles(math.rad(-90),math.rad(180 * math.sin(sine/8)),0),.25)
@@ -516,6 +454,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					RIGHTLEGLERP.C0 = RIGHTLEGLERP.C0:lerp(CFrame.new(-.5,2,0) * CFrame.Angles(0,0,0),.25)
 					swait()
 				end
+				
 				ws = 14
 				attacking = false
 			end)()
@@ -534,12 +473,6 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			change = .5
 			
 			local spinningmove = 0
-			local dbwouldlovethis = Instance.new("Sound",Torso)
-			dbwouldlovethis.SoundId = "rbxassetid://1532157598"
-			dbwouldlovethis.Volume = 8
-			dbwouldlovethis.Looped = true
-			dbwouldlovethis:Play()
-			
 			attacking = true
 			
 			coroutine.wrap(function()
@@ -552,8 +485,8 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					RIGHTARMLERP.C0 = RIGHTARMLERP.C0:lerp(CFrame.new(-1.4,1.45,0) * CFrame.Angles(math.rad(180),math.rad(1),math.rad(3 * math.sin(sine/2))), 0.3)
 					swait()
 				end
+				
 				ws = 14
-				dbwouldlovethis:Remove()
 				attacking = false
 			end)()
 		end
@@ -570,11 +503,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 6
 			change = .5
 			attacking = true
-			local slavdance = Instance.new("Sound",Torso)
-			slavdance.SoundId = "rbxassetid://5797060674"
-			slavdance.Volume = 6
-			slavdance.Looped = true
-			slavdance:Play()
+			
 			coroutine.wrap(function()
 				while dancing do
 					for i = 1, 17 do
@@ -597,8 +526,8 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					end
 					swait()
 				end
+				
 				ws = 14
-				slavdance:Remove()
 				attacking = false
 			end)()
 		end
@@ -619,12 +548,6 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			local walkrotation = 0
 			attacking = true
 			
-			local truelegend = Instance.new("Sound",Torso)
-			truelegend.SoundId = "rbxassetid://487872908"
-			truelegend.TimePosition = 13.98
-			truelegend.Volume = 8
-			truelegend.Looped = true
-			truelegend:Play()
 			coroutine.wrap(function()
 				while dancing do
 					for i = 1, 100 do
@@ -664,8 +587,8 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					walkrotation = 0
 					swait()
 				end
+				
 				ws = 14
-				truelegend:Remove()
 				attacking = false
 			end)()
 		end
@@ -683,11 +606,6 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			change = .5
 			attacking = true
 			
-			local plummusic = Instance.new("Sound",Torso)
-			plummusic.Volume = 8
-			plummusic.Looped = true
-			plummusic.SoundId = "rbxassetid://2526093213"
-			plummusic:Play()
 			coroutine.wrap(function()
 				while dancing do
 					for i = 1, 20 do
@@ -710,8 +628,8 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					end
 					swait()
 				end
+				
 				ws = 14
-				plummusic:Remove()
 				attacking = false
 			end)()
 		end
@@ -729,12 +647,6 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			change = .5
 			attacking = true
 			
-			local mrozo = Instance.new("Sound",Torso)
-			mrozo.Volume = 8
-			mrozo.SoundId = "rbxassetid://335701357"
-			mrozo.Looped = true
-			mrozo.TimePosition = 10
-			mrozo:Play()
 			coroutine.wrap(function()
 				while dancing do
 					RIGHTLEGLERP.C0 = RIGHTLEGLERP.C0:lerp(CFrame.new(-0.3, 2 , 0) * CFrame.Angles(0, math.rad(0), math.rad(-10)), 0.1)
@@ -744,7 +656,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(1.3 + .3 * math.sin(sine/3.5),.5 * math.sin(sine/3.5),.1) * CFrame.Angles(math.rad(0 * math.sin(sine/2)),0,math.rad(30 * math.sin(sine/3.5))),.2)
 					swait()
 				end
-				mrozo:Remove()
+				
 				ws = 14
 				attacking = false
 			end)()
@@ -765,12 +677,6 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			change = .5
 			attacking = true
 			
-			local spinme = Instance.new("Sound",Torso)
-			spinme.Volume = 8
-			spinme.SoundId = "rbxassetid://145799973"
-			spinme.Looped = true
-			spinme:Play()
-			
 			coroutine.wrap(function()
 				while dancing do
 					recordbaby = recordbaby + 10
@@ -781,7 +687,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(.5,1.98,0) * CFrame.Angles(0,0,math.rad(90)),.3)
 					swait()
 				end
-				spinme:Remove()
+				
 				ws = 14
 				attacking = false
 			end)()
@@ -808,15 +714,6 @@ checks1 = coroutine.wrap(function() -------Checks
 end)
 
 checks1()
-
-local function ray(POSITION, DIRECTION, RANGE, IGNOREDECENDANTS)
-	return workspace:FindPartOnRay(Ray.new(POSITION, DIRECTION.unit * RANGE), IGNOREDECENDANTS)
-end
-
-local function ray2(StartPos, EndPos, Distance, Ignore)
-	local DIRECTION = CFrame.new(StartPos,EndPos).lookVector
-	return ray(StartPos, DIRECTION, Distance, Ignore)
-end
 
 OrgnC0 = Neck.C0
 
@@ -846,70 +743,11 @@ end)
 
 movelimbs()
 
-immortal = {}
-
-for _, Part in pairs(Character:GetDescendants()) do
-	if Part:IsA("BasePart") and Part.Name ~= "lmagic" and Part.Name ~= "rmagic" then
-		if Part ~= Root and Part ~= Torso and Part ~= Head and Part ~= RightArm and Part ~= LeftArm and Part ~= RightLeg and Part.Name ~= "lmagic" and Part.Name ~= "rmagic" and Part ~= LeftLeg then
-			Part.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0)
-		end
-		table.insert(immortal,{Part,Part.Parent,Part.Material,Part.Color,Part.Transparency})
-	elseif Part:IsA("JointInstance") then
-		table.insert(immortal,{Part,Part.Parent,nil,nil,nil})
-	end
-end
-
-for e = 1, #immortal do
-	if immortal[e] ~= nil then
-		local STUFF = immortal[e]
-		local PART = STUFF[1]
-		local PARENT = STUFF[2]
-		local MATERIAL = STUFF[3]
-		local COLOR = STUFF[4]
-		local TRANSPARENCY = STUFF[5]
-		
-		if PART.ClassName == "Part" and PART ~= Root and PART.Name ~= "lmagic" and PART.Name ~= "rmagic" then
-			PART.Material = MATERIAL
-			PART.Color = COLOR
-			PART.Transparency = TRANSPARENCY
-		end
-
-		AddConnection(PART.AncestryChanged:connect(function()
-			PART.Parent = PARENT
-		end))
-	end
-end
-
-function immortality()
-	for e = 1, #immortal do
-		if immortal[e] ~= nil then
-			local STUFF = immortal[e]
-			local PART = STUFF[1]
-			local PARENT = STUFF[2]
-			local MATERIAL = STUFF[3]
-			local COLOR = STUFF[4]
-			local TRANSPARENCY = STUFF[5]
-			if PART.ClassName == "Part" and PART == Root then
-				PART.Material = MATERIAL
-				PART.Color = COLOR
-				PART.Transparency = TRANSPARENCY
-			end
-			if PART.Parent ~= PARENT then
-				Humanoid:Remove()
-				PART.Parent = PARENT
-				
-				Humanoid = Instance.new("Humanoid")
-				Humanoid.Parent = Character
-			end
-		end
-	end
-end
-
 local Spin = false
 local Animations = coroutine.wrap(function()
 	while true do
 		local Animation = Character:FindFirstChild('Animation')
-		if Animation and Animation.Value ~= 'krystal' or not Animation:IsDescendantOf(game) then
+		if Animation and Animation.Value ~= 'krystal' or Animation and not Animation:IsDescendantOf(game) then
 			for _, Connection in pairs(Connections) do
 				pcall(function()
 					Connection:Disconnect()
@@ -926,8 +764,6 @@ local Animations = coroutine.wrap(function()
 			change = 1
 			Spin = false
 
-			for i,v in pairs(Torso:GetChildren()) do if v:IsA("Sound") then v:Remove() end end
-
 			LEFTLEGLERP.C1 = LEFTLEGLERP.C1:lerp(CFrame.new(0,0,0) * CFrame.Angles(0,0,0),.1)
 			RIGHTLEGLERP.C1 = RIGHTLEGLERP.C1:lerp(CFrame.new(0,0,0) * CFrame.Angles(math.rad(0),0,0),.1)
 			LEFTARMLERP.C1 = LEFTARMLERP.C1:lerp(CFrame.new(0,0,0) * CFrame.Angles(0,0,0),.4)
@@ -938,8 +774,6 @@ local Animations = coroutine.wrap(function()
 		elseif position == "Falling" and attacking == false then
 			change = 1
 			Spin = false
-
-			for i,v in pairs(Torso:GetChildren()) do if v:IsA("Sound") then v:Remove() end end
 
 			ROOTLERP.C0 = ROOTLERP.C0:lerp(CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(15), math.rad(0), math.rad(0)), 0.15)
 			LEFTLEGLERP.C1 = LEFTLEGLERP.C1:lerp(CFrame.new(0,0,0) * CFrame.Angles(0,0,0),.1)
@@ -954,8 +788,6 @@ local Animations = coroutine.wrap(function()
 			walking = true
 			Spin = false
 
-			for i,v in pairs(Torso:GetChildren()) do if v:IsA("Sound") then v:Remove() end end
-
 			RIGHTARMLERP.C0 = RIGHTARMLERP.C0:lerp(CFrame.new(-1.5 + Root.RotVelocity.Y / 85,.35,-.5*math.sin(sine/11)) * CFrame.Angles(math.rad(35*math.sin(sine/11)),math.rad(0*math.sin(sine/11)),math.rad(-10 + Root.RotVelocity.Y / 10, math.sin(-20 * math.sin(sine/4)))),.3)
 			LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(1.5 + Root.RotVelocity.Y / 85,.45,.5*math.sin(sine/11)) * CFrame.Angles(math.rad(-55*math.sin(sine/11)),math.rad(-5*math.sin(sine/8)),math.rad(10 + Root.RotVelocity.Y / 10, math.sin(20 * math.sin(sine/4)))),.3)
 			ROOTLERP.C0 = ROOTLERP.C0:lerp(CFrame.new(0, -.15 * 0.6*-math.sin(sine/5.5), 0) * CFrame.Angles(math.rad(10), math.rad(12 * -math.sin(sine/11)), math.rad(0) + Root.RotVelocity.Y / 30, math.cos(25 * math.cos(sine/10))), 0.3)
@@ -965,8 +797,6 @@ local Animations = coroutine.wrap(function()
 			change = .5
 			Spin = true
 
-			for i,v in pairs(Torso:GetChildren()) do if v:IsA("Sound") then v:Remove() end end
-
 			ROOTLERP.C0 = ROOTLERP.C0:lerp(CFrame.new(0, -.2 + -.1 * math.sin(sine/12), 0) * CFrame.Angles(math.rad(6 * -math.sin(sine/12)),math.rad(0),math.rad(0)),.1)
 			LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(1.5,.27 + .02 * math.sin(sine/12),.20 * -math.sin(sine/12)) * CFrame.Angles(math.rad(20 * math.sin(sine/12)),math.rad(0),math.rad(10)), 0.1)
 			RIGHTARMLERP.C0 = RIGHTARMLERP.C0:lerp(CFrame.new(-1.5,.27 + .02 * math.sin(sine/12),.20 * -math.sin(sine/12)) * CFrame.Angles(math.rad(20 * math.sin(sine/12)),math.rad(0),math.rad(-10)), 0.1)
@@ -974,8 +804,6 @@ local Animations = coroutine.wrap(function()
 			LEFTLEGLERP.C0 = LEFTLEGLERP.C0:lerp(CFrame.new(0.3, 2.0 - .1 * math.sin(sine/12), 0) * CFrame.Angles(math.rad(6 * -math.sin(sine/12)), math.rad(0), math.rad(10)), 0.1)
 		elseif position == "Running" and attacking == false then
 			change = 1
-
-			for i,v in pairs(Torso:GetChildren()) do if v:IsA("Sound") then v:Remove() end end
 
 			RIGHTARMLERP.C0 = RIGHTARMLERP.C0:lerp(CFrame.new(0, .5, 0)*CFrame.Angles(math.rad(0),math.rad(0),math.rad(0)), 0.3)
 			LEFTARMLERP.C1 = LEFTARMLERP.C1:lerp(CFrame.new(-1.24+.6*math.sin(sine/4)/1.4, 0.54, 0-0.8*math.sin(sine/4))*CFrame.Angles(math.rad(6+140*math.sin(sine/4)/1.2), math.rad(0), math.rad(20+70*math.sin(sine/4))), 0.3)
