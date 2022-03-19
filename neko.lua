@@ -49,29 +49,6 @@ function newConnection(Connection)
 	connections[#connections + 1] = Connection
 end
 
-newConnection(mouse.Button1Down:Connect(function()
-	if dead == false then
-		lt = false
-		ltt = false
-
-		if game:GetService("Players"):GetPlayerFromCharacter(mouse.Target.Parent) then
-			if mouse.Target.Parent == char.Name or mouse.Target.Parent == CloneChar then return end
-			game:GetService("RunService").RenderStepped:Wait()
-			wait(1)
-		elseif game:GetService("Players"):GetPlayerFromCharacter(mouse.Target.Parent.Parent) then
-			if mouse.Target.Parent == char.Name or mouse.Target.Parent == CloneChar then return end
-
-			game:GetService("RunService").RenderStepped:Wait()
-			wait(1)
-		else
-			game:GetService("RunService").RenderStepped:Wait()
-			wait(1)
-		end
-		wait()
-		lt = true
-	end
-end))
-
 ArtificialHB = Instance.new('BindableEvent')
 ArtificialHB.Name = 'Heartbeat'
 
