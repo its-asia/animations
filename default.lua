@@ -441,7 +441,7 @@ Humanoid.PlatformStanding:connect(onPlatformStanding)
 Humanoid.Swimming:connect(onSwimming)
 
 -- setup emote chat hook
-game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
+LocalPlayer.Chatted:connect(function(msg)
 	local emote = ""
 	if msg == "/e dance" then
 		emote = dances[math.random(1, #dances)]
