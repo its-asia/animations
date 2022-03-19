@@ -1,7 +1,4 @@
-local DummyName = loadstring(game:HttpGet("https://raw.githubusercontent.com/its-asia/animations/main/DummyName.lua", true))()
-
-script = workspace[DummyName]:FindFirstChild('Animate') or workspace[DummyName]:FindFirstChild('Head')
-
+local LocalPlayer = game:GetService('Players').LocalPlayer
 function waitForChild(parent, childName)
 	local child = parent:findFirstChild(childName)
 	if child then return child end
@@ -17,7 +14,7 @@ end
 
 -- declarations
 
-local Figure = script.Parent
+local Figure = LocalPlayer.Character
 local Torso = waitForChild(Figure, "Torso")
 local RightShoulder = waitForChild(Torso, "Right Shoulder")
 local LeftShoulder = waitForChild(Torso, "Left Shoulder")
@@ -253,8 +250,8 @@ local runService = game:service("RunService");
 while Figure.Parent~=nil do
 	local _, time = wait(0.1)
 	move(time)
-	
-	if workspace[DummyName]:FindFirstChild("Animation") and workspace[DummyName].Animation.Value ~= "2008" then
+
+	if LocalPlayer.Character:FindFirstChild("Animation") and LocalPlayer.Character.Animation.Value ~= "2008" then
 		break
 	end
 end
