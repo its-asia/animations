@@ -32,7 +32,6 @@ Updates by charlie:
 
 ]]
 
-local DummyName = loadstring(game:HttpGet("https://raw.githubusercontent.com/its-asia/animations/main/DummyName.lua", true))()
 local Players = game:GetService("Players")
 
 local Connections = {}
@@ -41,7 +40,7 @@ function AddConnection(Connection)
 end
 
 Player = Players.LocalPlayer
-Character = workspace[DummyName]
+Character = Player.Character
 Humanoid = Character.Humanoid
 
 LeftArm = Character["Left Arm"]
@@ -205,9 +204,9 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 0
 			change = .5
 			attacking = true
-			
+
 			local lol90 = 0
-			
+
 			coroutine.wrap(function()
 				while dancing do
 					lol90 = lol90 + 11
@@ -219,7 +218,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					LEFTLEGLERP.C0 = LEFTLEGLERP.C0:lerp(CFrame.new(0.3, 2.0, 0) * CFrame.Angles(0, math.rad(0), math.rad(10 - 5 * math.sin(sine/3))), 0.25)
 					swait()
 				end
-				
+
 				ws = 14
 				ROOTLERP.C1 = CFrame.new(0,0,0) * CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
 				attacking = false
@@ -238,43 +237,43 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 3
 			change = .5
 			attacking = true
-			
+
 			local g1 = Instance.new("BodyGyro", Root)
 			g1.D = 175
 			g1.P = 20000
 			g1.MaxTorque = Vector3.new(0,9000,0)
-			
+
 			local robuxpile = Instance.new("Part",Torso)
 			robuxpile.Size = Vector3.new(1,1,1)
 			robuxpile.CFrame = LeftArm.CFrame
 			robuxpile.CanCollide = false
-			
+
 			local robuxpileweld = Instance.new("Weld",robuxpile)
 			robuxpileweld.Part0 = robuxpile
 			robuxpileweld.Part1 = Torso
 			robuxpileweld.C0 = robuxpile.CFrame:inverse() * LeftArm.CFrame * CFrame.new(1,-.7,1.4)
-			
+
 			local mrobuxpile = Instance.new("SpecialMesh", robuxpile)
 			mrobuxpile.MeshType = "FileMesh"
 			mrobuxpile.Scale = Vector3.new(0.85, .85, .85)
 			mrobuxpile.MeshId,mrobuxpile.TextureId = 'http://www.roblox.com/asset/?id=1285245','http://www.roblox.com/asset/?id=8587344'
-			
+
 			coroutine.wrap(function()
 				coroutine.wrap(function()
 					while wait(.35) do
 						if not dancing then break end
-						
+
 						local robux = Instance.new("Part",Torso)
 						robux.CFrame = robuxpile.CFrame * CFrame.Angles(math.rad(0),math.rad(90),math.rad(90))
 						robux.Anchored = false
 						robux.CanCollide = true
 						robux.Size = Vector3.new(1,1,1)
 						removeuseless:AddItem(robux,4)
-						
+
 						local mrobux = Instance.new("SpecialMesh", robux)
 						mrobux.MeshType = "FileMesh"
 						mrobux.Scale = Vector3.new(1.25, 1.25, 1.25)
-						
+
 						mrobux.MeshId,mrobux.TextureId = 'http://www.roblox.com/asset/?id=667285348','http://www.roblox.com/asset/?id=665939136'
 						local bov = Instance.new("BodyVelocity",robux)
 						bov.maxForce = Vector3.new(99999,99999,99999)
@@ -311,7 +310,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 0
 			change = .5
 			attacking = true
-			
+
 			coroutine.wrap(function()
 				while dancing do
 					for i = 1, 15 do
@@ -352,7 +351,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					end
 					swait()
 				end
-				
+
 				ws = 14
 				attacking = false
 			end)()
@@ -370,7 +369,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 0
 			change = .5
 			attacking = true
-			
+
 			coroutine.wrap(function()
 				coroutine.wrap(function()
 					while dancing do
@@ -414,7 +413,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 6
 			change = .5
 			attacking = true
-			
+
 			coroutine.wrap(function()
 				while dancing do
 					ROOTLERP.C0 = ROOTLERP.C0:Lerp(CFrame.new(0,-.4,0) * CFrame.Angles(math.rad(20 + 5 * math.sin(sine/2)),math.rad(10 * math.sin(sine/4)),0),.25)
@@ -424,7 +423,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					LEFTLEGLERP.C0 = LEFTLEGLERP.C0:lerp(CFrame.new(0.33, 2.0,-.2 - .3 * math.sin(sine/2)) * CFrame.Angles(math.rad(-20 - 20 * math.sin(sine/2)), math.rad(0), math.rad(8)), 0.25)
 					swait()
 				end
-				
+
 				ws = 14
 				attacking = false
 			end)()
@@ -442,9 +441,9 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 0
 			change = .5
 			attacking = true
-			
+
 			local barrelspin = 0
-			
+
 			coroutine.wrap(function()
 				while dancing do
 					ROOTLERP.C0 = ROOTLERP.C0:Lerp(CFrame.new(5 * math.sin(sine/8),-1.8,0) * CFrame.Angles(math.rad(-90),math.rad(180 * math.sin(sine/8)),0),.25)
@@ -454,7 +453,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					RIGHTLEGLERP.C0 = RIGHTLEGLERP.C0:lerp(CFrame.new(-.5,2,0) * CFrame.Angles(0,0,0),.25)
 					swait()
 				end
-				
+
 				ws = 14
 				attacking = false
 			end)()
@@ -471,10 +470,10 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			dancing = true
 			ws = 0
 			change = .5
-			
+
 			local spinningmove = 0
 			attacking = true
-			
+
 			coroutine.wrap(function()
 				while dancing do
 					spinningmove = spinningmove + 10
@@ -485,7 +484,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					RIGHTARMLERP.C0 = RIGHTARMLERP.C0:lerp(CFrame.new(-1.4,1.45,0) * CFrame.Angles(math.rad(180),math.rad(1),math.rad(3 * math.sin(sine/2))), 0.3)
 					swait()
 				end
-				
+
 				ws = 14
 				attacking = false
 			end)()
@@ -503,7 +502,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 6
 			change = .5
 			attacking = true
-			
+
 			coroutine.wrap(function()
 				while dancing do
 					for i = 1, 17 do
@@ -526,7 +525,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					end
 					swait()
 				end
-				
+
 				ws = 14
 				attacking = false
 			end)()
@@ -543,11 +542,11 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			dancing = true
 			ws = 0
 			change = .5
-			
+
 			local walkforward = 0
 			local walkrotation = 0
 			attacking = true
-			
+
 			coroutine.wrap(function()
 				while dancing do
 					for i = 1, 100 do
@@ -587,7 +586,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					walkrotation = 0
 					swait()
 				end
-				
+
 				ws = 14
 				attacking = false
 			end)()
@@ -605,7 +604,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 0
 			change = .5
 			attacking = true
-			
+
 			coroutine.wrap(function()
 				while dancing do
 					for i = 1, 20 do
@@ -628,7 +627,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					end
 					swait()
 				end
-				
+
 				ws = 14
 				attacking = false
 			end)()
@@ -646,7 +645,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			ws = 0
 			change = .5
 			attacking = true
-			
+
 			coroutine.wrap(function()
 				while dancing do
 					RIGHTLEGLERP.C0 = RIGHTLEGLERP.C0:lerp(CFrame.new(-0.3, 2 , 0) * CFrame.Angles(0, math.rad(0), math.rad(-10)), 0.1)
@@ -656,7 +655,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(1.3 + .3 * math.sin(sine/3.5),.5 * math.sin(sine/3.5),.1) * CFrame.Angles(math.rad(0 * math.sin(sine/2)),0,math.rad(30 * math.sin(sine/3.5))),.2)
 					swait()
 				end
-				
+
 				ws = 14
 				attacking = false
 			end)()
@@ -671,12 +670,12 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 			dancing = false
 		else
 			ws = 6
-			
+
 			local recordbaby = 0
 			dancing = true
 			change = .5
 			attacking = true
-			
+
 			coroutine.wrap(function()
 				while dancing do
 					recordbaby = recordbaby + 10
@@ -687,7 +686,7 @@ AddConnection(mouse.KeyDown:connect(function(Press)
 					LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(.5,1.98,0) * CFrame.Angles(0,0,math.rad(90)),.3)
 					swait()
 				end
-				
+
 				ws = 14
 				attacking = false
 			end)()
